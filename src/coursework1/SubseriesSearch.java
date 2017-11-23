@@ -7,10 +7,7 @@ package coursework1;
 
 import java.util.Arrays;
 
-/**
- *
- * @author pdu15gsu
- */
+
 public class SubseriesSearch {
     
     int index;
@@ -35,22 +32,22 @@ public class SubseriesSearch {
         System.out.println("index: " + T + ", " + index + "\ndistance: " + distance); 
     }
             
-    double d(int[]Q, int[] S){
-        int sum = 0;
+    double d(double[]Q, double[] S){
+        double sum = 0;
         for(int i = 0; i < S.length; i++)
             sum+=(S[i]-Q[i])*(S[i]-Q[i]);
         return Math.sqrt(sum);
     }
     
-    void printArrLine(int[] Q){
+    void printArrLine(double[] Q){
         for(int i = 0; i < Q.length; i++)
             System.out.print(i == Q.length-1 ? Q[i] + "\n" : Q[i] + ", ");
     }
     
-    void run(int[] S, int[][] T){
+    void run(double[] S, double[][] T){
         
         int k = S.length;
-        int[] Q = new int[3];
+        double[] Q = new double[3];
         double temp;
         this.distance = 0;
         
@@ -70,6 +67,25 @@ public class SubseriesSearch {
                 }
             }
         }
+    }
+    
+    public void experiment(int n)
+    {
+        RandomGenerator T = new RandomGenerator();
+        run(T.makeQuery(3), T.makeSet(n));
+    }
+    
+    public void timingExperiment(int n, int reps)
+    {
+        double sum = 0;
+        for(int i = 0; i< reps; i++)
+        {
+            long t1 = System.nanoTime();
+            experiment(n);
+            sum+= (System.nanoTime() - t1)/10000000.0; 
+            //System.out.println(sum);
+        }
+        System.out.println(n + "," + sum/n);
     }
     
     

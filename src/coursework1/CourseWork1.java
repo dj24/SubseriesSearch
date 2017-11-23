@@ -15,15 +15,16 @@ public class CourseWork1 {
     
     public static void main(String[] args) 
     {
-        int[] S = {0,1,5};
-        
-        int[][] T = {{1,2,3,0,1,5},{1,2,3,0,1,5},{0,1,5},{1,2,3,1,0,3}};
+        RandomGenerator T = new RandomGenerator();
         
         SubseriesSearch sub = new SubseriesSearch();
         
-        sub.run(S, T);
         
-        sub.output();
+        
+        for(int i = 5; i <= 100; i+= 5)
+        {
+            sub.timingExperiment(i,3000);
+        }
     }
     
 }
