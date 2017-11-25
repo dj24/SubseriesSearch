@@ -21,9 +21,9 @@ public class CourseWork1 {
         
         
         
-        for(int i = 5; i <= 100; i+= 5)
+        for(int i = 0; i <= 500; i+=20)
         {
-            sub.timingExperiment(i,3000);
+            sub.timingExperiment(i,1000);
         }
     }
     

@@ -78,14 +78,15 @@ public class SubseriesSearch {
     public void timingExperiment(int n, int reps)
     {
         double sum = 0;
-        for(int i = 0; i< reps; i++)
+        for(int i = 0; i< reps; i++) 
         {
             long t1 = System.nanoTime();
             experiment(n);
             sum+= (System.nanoTime() - t1)/10000000.0; 
             //System.out.println(sum);
         }
-        System.out.println(n + "," + sum/n);
+        if(n != 0)
+            System.out.println(sum/100);
     }
     
     
