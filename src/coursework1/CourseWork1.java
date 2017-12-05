@@ -13,19 +13,19 @@ import java.util.Arrays;
  */
 public class CourseWork1 {
     
-    static void run(double[] S, double[][] T){
+    static void run(int[] S, int[][] T){
         
         int k = S.length;
-        double[] Q = new double[k];
+        int[] Q = new int[k];
         
         double distance = 0;
-        int[] index = {0,0};
+        int[] index = new int[2];
         for(int i = 0; i<T.length;i++)
         {
-            for(int j = 0; j<T[i].length-k+1;j++)
+            for(int j = 0; j<T[i].length;j++)
             {
                 Q = Arrays.copyOfRange(T[i], j, j+k);
-                
+                System.out.print(T[i][j] + " , ");
                 double sum = 0;
                 for(int l = 0; l < S.length; l++)
                     sum+=(S[l]-Q[l])*(S[l]-Q[l]);
@@ -33,19 +33,20 @@ public class CourseWork1 {
                 
                 if(sum < distance || (j == 0 && i == 0))
                 {
-                    index[0] = i;
-                    index[1] = j;
+                    index = new int[] {i,j};
                     distance = sum;
-                    System.out.println(distance);
+                    //System.out.println(i + "," + j);
                 }
             }
+            System.out.println();
         }
+        System.out.println(T[index[0]][index[1]]);
     }
     
     static public void experiment(int n)
     {
         RandomGenerator T = new RandomGenerator();
-        run(T.makeQuery(3), T.makeSet(n));
+        run(T.makeQuery(8), T.makeSet(n));
     }
     
     static public void timingExperiment(int n, int reps)
@@ -63,7 +64,7 @@ public class CourseWork1 {
     }
     public static void main(String[] args) 
     {
-        experiment(50);
+        experiment(10);
         
         
         

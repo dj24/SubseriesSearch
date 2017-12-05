@@ -5,6 +5,7 @@
  */
 package coursework1;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 /**
  *
  * @author User
@@ -16,27 +17,27 @@ public class RandomGenerator {
         return new Random();
     }
     
-    public static double[] makeQuery(int s)
+    public static int[] makeQuery(int s)
     {
-        double[] q = new double[s];
+        int[] q = new int[s];
         
         for(int i = 0; i < s; i++)
         {
-            q[i] = new Random().nextDouble();
+            q[i] = ThreadLocalRandom.current().nextInt(0,10);
         }
         
         return q;
     }
     
-    public static double[][] makeSet(int n)
+    public static int[][] makeSet(int n)
     {
-        double[][] T = new double[n][n];
+        int[][] T = new int[n][n];
         
         for (int i = 0; i < n; i++)
         {
             for (int j = 0; j < n; j++)
             {
-                T[i][j] = new Random().nextDouble();
+                T[i][j] = ThreadLocalRandom.current().nextInt(0,10);
             }  
         }
         return T;
