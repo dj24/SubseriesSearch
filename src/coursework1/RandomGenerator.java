@@ -12,11 +12,6 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class RandomGenerator {
     
-    public static Random rand()
-    {
-        return new Random();
-    }
-    
     public static int[] makeQuery(int s)
     {
         int[] q = new int[s];
